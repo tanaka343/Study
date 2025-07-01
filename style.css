@@ -1,0 +1,16 @@
+h1{
+  color:red;
+}
+
+button:hover{
+  color:white;
+  background-color: blue;
+}
+
+input[type="text"] + button:hover{
+  background-color: green;
+}
+
+form :nth-of-type(1){
+  background-color: rgb(145, 150, 155);
+}
