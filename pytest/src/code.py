@@ -1,7 +1,7 @@
 import requests
 
 def sum_numbers(a,b):
-    return (a+b) ,a
+    return (a+b) 
 
 def get_json_data(id):
     res = requests.get('https://')
