@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+<table border="1">
+  <tr>
+    <th>a</th>
+    <th>a</th>
+    <th>a</th>
+    <th>a</th>
+    <th>a</th>
+  </tr>
+  {% for facility_data in facility_list %}
+  <tr>
+    <td>{{facility_data.houjin_name}}</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  {% endfor %}
+</table>
+
+
+
+{% endblock %}
