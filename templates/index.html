@@ -3,20 +3,19 @@
 
 <table border="1">
   <tr>
-    <th>a</th>
-    <th>a</th>
-    <th>a</th>
-    <th>a</th>
-    <th>a</th>
+    <th>法人名</th>
+    <th>事業所名</th>
+    <th>メール</th>
+    <th>電話番号</th>
+    <th>ホームページ</th>
   </tr>
-  {% for facility_data in facility_list %}
+  {% for i in range(num) %}
   <tr>
-    <td>{{facility_data.houjin_name}}</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>{{facility_list['houjin_name'][i]}}</td>
+    <td>{{facility_list['jigyousyo_name'][i]}}</td>
+    <td>{{facility_list['email'][i]}}</td>
+    <td>{{facility_list['phone'][i]}}</td>
+    <td>{{facility_list['website'][i]}}</td>
   </tr>
   {% endfor %}
 </table>
