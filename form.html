@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>formの練習</h1>
+  <form action="/index">
+    <p>
+      <label>ユーザー名：
+      <input type="text" placeholder="ユーザー名" name="username">
+      </label>
+    </p>
+    <p>
+      <label for="password">パスワード：</label>
+      <input type="password" placeholder="パスワード" id="password">
+    </p>
+    <button type="submit">送信</button>
+  </form>
+
+  <hr>
+  <form action="https://www.google.com/search">
+    <input type="text" name="q">
+    <button>検索</button>
+  </form>
+  <form action="https://www.youtube.com/results">
+    <input type="text" name="search_query">
+  </form>
+
+  <h1>いろいろな選択方法</h1>
+  <form action="/regist">
+    <p>
+      <label for="fish">利用規約に同意しますか</label>
+      <input type="checkbox" id="fish" name="fish">
+    </p>
+    <p>
+      <input type="radio" name="size" id="cheese" value="L">
+      <label for="cheese">L</label>
+      <input type="radio" name="size" id="cake" value="M">
+      <label for="cake">M</label>
+      <input type="radio" name="size" id="cookie" value="S">
+      <label for="cookie">S</label>
+    </p>
+    <p>
+      <label for="meal">食事を選択してください</label>
+      <select name="dish" id="meal">
+        <option value="bakedfish">焼き魚</option>
+        <option value="rowfish">刺身</option>
+        <option value="susifish">寿司</option>
+      </select>
+    </p>
+    <button>送信</button>
+  </form>
+  
+</body>
+</html>
