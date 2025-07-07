@@ -1,24 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
-
-<table border="1">
-  <tr>
-    <th>法人名</th>
-    <th>事業所名</th>
-    <th>メール</th>
-    <th>電話番号</th>
-    <th>ホームページ</th>
-  </tr>
-  {% for i in range(num) %}
-  <tr>
-    <td>{{facility_list['houjin_name'][i]}}</td>
-    <td>{{facility_list['jigyousyo_name'][i]}}</td>
-    <td>{{facility_list['email'][i]}}</td>
-    <td>{{facility_list['phone'][i]}}</td>
-    <td>{{facility_list['website'][i]}}</td>
-  </tr>
-  {% endfor %}
-</table>
+{% if facility_list==[] %}
+<p>データがありません</p>
+{% else %}
+  <table border="1">
+    <tr>
+      <th>法人名</th>
+      <th>事業所名</th>
+      <th>メール</th>
+      <th>電話番号</th>
+      <th>ホームページ</th>
+    </tr>
+    {% for i in range(num) %}
+    <tr>
+      <td>{{facility_list['houjin_name'][i]}}</td>
+      <td>{{facility_list['jigyousyo_name'][i]}}</td>
+      <td>{{facility_list['email'][i]}}</td>
+      <td>{{facility_list['phone'][i]}}</td>
+      <td>{{facility_list['website'][i]}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <form action="/to_csv" method="post">
+    <!-- <label for="csv">csv</label>
+    <input type="radio" id="csv" name="csv"> -->
+    <button type="submit">csvで出力</button>
+  </form>
+{% endif %}
 
 
 
