@@ -1,16 +1,12 @@
-h1{
-  color:red;
+body{
+  width: 960px;
+  padding: 4%;
 }
-
-button:hover{
-  color:white;
-  background-color: blue;
+header h1{
+  width: 20px;
 }
-
-input[type="text"] + button:hover{
-  background-color: green;
-}
-
-form :nth-of-type(1){
-  background-color: rgb(145, 150, 155);
+nav{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
