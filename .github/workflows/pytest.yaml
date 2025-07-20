@@ -29,4 +29,4 @@ jobs:
         run: pytest 
 
       - name: Print DB_USER
-        run: echo "DB_USER -> $(DB_USER)"
+        run: echo "DB_USER -> ${DB_USER}"
