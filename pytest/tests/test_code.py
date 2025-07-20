@@ -21,17 +21,17 @@ def test_sum_numbers2(input_data,expected):
 
 
 
-# def get_json_data_mock(id):
-#     return{'name':'サプー'}
+def get_json_data_mock(id):
+    return{'name':'サプー'}
 
-# def test_get_user_names(monkeypatch):
-#     monkeypatch.setattr(
-#         code,'get_json_data',get_json_data_mock
-#     )
-#     result= code.get_user_names(['001','009'])
+def test_get_user_names(monkeypatch):
+    monkeypatch.setattr(
+        code,'get_json_data',get_json_data_mock
+    )
+    result= code.get_user_names(['001','009'])
 
-#     assert list(result.keys())==['001','009']
-#     assert list(result.values())==['サプー','サプー']
+    assert list(result.keys())==['001','009']
+    assert list(result.values())==['サプー','サプー']
 
 # def test_user_name_validation():
 #     with pytest.raises(ValueError) as e:
