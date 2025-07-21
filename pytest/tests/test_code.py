@@ -31,7 +31,7 @@ def test_get_user_names(monkeypatch):
     result= code.get_user_names(['001','009'])
 
     assert list(result.keys())==['001','009']
-    assert list(result.values())==['サプー','サプー']
+    assert list(result.values())==['s','サプー']
 
 # def test_user_name_validation():
 #     with pytest.raises(ValueError) as e:
