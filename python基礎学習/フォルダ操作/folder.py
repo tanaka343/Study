@@ -33,4 +33,30 @@ from pathlib import Path
 # for p in pathlib.Path('python基礎学習').iterdir():
 #   print(p)
 
-print(list(pathlib.Path('python基礎学習').iterdir()))
+# print(list(pathlib.Path('python基礎学習').iterdir()))
+
+p= Path('plactice')
+if p.exists()==False:
+  p.mkdir()
+p_newfile = pathlib.Path('plactice/test.txt')
+if p_newfile.exists()==False:
+  p_newfile.touch()
+
+# p.rmdir()
+
+p_newfile.write_text('test')
+timestanp=p_newfile.stat()
+last_kousin=timestanp.st_atime
+
+import datetime
+
+dt= datetime.datetime.fromtimestamp(last_kousin)
+
+print(dt.date())
+print(dt.time())
+
+today = datetime.datetime.now()
+print(today.date())
+
+if today.date()==dt.date():
+  print('Yes')
