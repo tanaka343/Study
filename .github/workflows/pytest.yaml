@@ -1,0 +1,35 @@
+name: Run Pytest
+
+on:
+  pull_request:
+    branches: ["main"]
+
+jobs: 
+  test: 
+    runs-on: windows-latest
+    env:
+      DB_USER: "postgres"
+
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: steps Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.9
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt 
+          pip install pytest
+
+
+      - name: Run Pytest
+        run: pytest 
+
+      - name: Print DB_USER
+        run: echo "DB_USER -> $env:DB_USER"
+
+      - name: Print secrets
+        run: echo "SUPU_API_KEY -> ${{secrets.SUPU_API_KEY}}"

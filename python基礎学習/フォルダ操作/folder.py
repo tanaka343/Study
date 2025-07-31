@@ -1,5 +1,5 @@
 import os
-import pathlib
+
 import datetime
 import time
 import platform
@@ -35,28 +35,40 @@ from pathlib import Path
 
 # print(list(pathlib.Path('python基礎学習').iterdir()))
 
-p= Path('plactice')
-if p.exists()==False:
-  p.mkdir()
-p_newfile = pathlib.Path('plactice/test.txt')
-if p_newfile.exists()==False:
-  p_newfile.touch()
+# p= Path('plactice')
+# if p.exists()==False:
+#   p.mkdir()
+# p_newfile = Path('python基礎学習')
+# # if p_newfile.exists()==False:
+# #   p_newfile.touch()
 
-# p.rmdir()
+# # p.rmdir()
 
-p_newfile.write_text('test')
-timestanp=p_newfile.stat()
-last_kousin=timestanp.st_atime
+# # p_newfile.write_text('test')
+# timestanp=p_newfile.stat()
+# last_kousin=timestanp.st_atime
 
 import datetime
 
-dt= datetime.datetime.fromtimestamp(last_kousin)
+# dt= datetime.datetime.fromtimestamp(last_kousin)
 
-print(dt.date())
-print(dt.time())
+# print(dt.date())
+# print(dt.time())
 
-today = datetime.datetime.now()
-print(today.date())
+# today = datetime.datetime.now()
+# print(today.date())
 
-if today.date()==dt.date():
-  print('Yes')
+# if today.date()==dt.date():
+#   for p in p_newfile.iterdir():
+#     print(p)
+# else:
+#   print('No')
+p=Path('plactice')
+for p in p.iterdir():
+
+  timestanp=p.stat()
+  create_file=timestanp.st_ctime
+  dt= datetime.datetime.fromtimestamp(create_file)
+  today = datetime.datetime.now()
+  if dt.date()==today.date():
+    print(p.name)
