@@ -72,3 +72,4 @@ for p in p.iterdir():
   today = datetime.datetime.now()
   if dt.date()==today.date():
     print(p.name)
+    p.unlink(missing_ok=False)
