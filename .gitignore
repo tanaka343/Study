@@ -3,4 +3,16 @@
 
 **/__pycache__/
 **/.ipynb_checkpoints/
-**/venv
+
+# 仮想環境
+venv/
+**/venv/
+env/
+**/env/
+.venv/
+**/.venv/
+
+# その他のPython関連
+*.egg-info/
+dist/
+build/
