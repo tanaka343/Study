@@ -37,3 +37,7 @@ Thumbs.db
 dist/
 build/
 *.egg-info/
+
+# Dockerデータファイルのみ除外
+docker/postgres/pgdata/
+docker/pgadmin/
