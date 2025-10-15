@@ -1,4 +1,39 @@
-fastapi==0.104.1
-uvicorn==0.24.0
-psycopg2-binary==2.9.9
-sqlalchemy==2.0.23
+# 仮想環境
+venv/
+env/
+ENV/
+
+# Pythonキャッシュ
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# 環境変数・秘密情報
+.env
+.env.local
+*.key
+*.pem
+
+# データベース
+*.db
+*.sqlite
+*.sqlite3
+
+# ログファイル
+*.log
+
+# OS固有
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ビルド成果物
+dist/
+build/
+*.egg-info/
