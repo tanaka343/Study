@@ -1,6 +1,11 @@
-from fastapi import APIRouter,Body
+from typing import Annotated
+from fastapi import APIRouter,Body,Depends
 from cruds import item as item_cruds
 from schemas import ItemCreate
+from database import get_db
+from sqlalchemy.orm import Session
+
+DbDependency = Annotated[Session,Depends(get_db)]
 
 #prefix共通設定
 router = APIRouter(prefix="/items",tags=["Items"])
