@@ -30,23 +30,15 @@ class ItemStatus(Enum):
 #     Item(3,"Python本",1000,"使用感あり",ItemStatus.SOLD_OUT),
 # ]
 
-# def find_all():
-#     return items
+def find_all(db :Session):
+    return db.query(Item).all()
 
 
-# def find_by_id(id: int):
-#     for item in items:
-#         if item.id == id:
-#             return item
-#         return None
+def find_by_id(db : Session,id: int):
+    return db.query(Item).filter(Item.id == id).first()
     
-# def find_by_name(name: str):
-#     filterd_items = []
-    
-    # for item in items:
-    #     if name in item.name:
-    #         filterd_items.append(item)
-    # return filterd_items
+def find_by_name(db : Session,name: str):
+    return db.query(Item).filter(Item.name.like(f"%{name}%")).all()
 
 
 def create(db: Session,item_create :ItemCreate):
@@ -57,19 +49,23 @@ def create(db: Session,item_create :ItemCreate):
     db.commit()
     return new_item
 
-# def updata(id: int,item_update):
-#     for item in items:
-#         if item.id == id:
-#             item.name = item_update.get("name",item.name)
-#             item.price = item_update.get("price",item.price)
-#             item.description = item_update.get("description",item.description)
-#             item.status = item_update.get("status",item.status)
-#             return item
-#     return None
+def updata(db: Session,id: int,item_update):
+    item =find_by_id(db,id)
+    if item is None:
+        return None
+    item.name = item_update.get("name",item.name)
+    item.price = item_update.get("price",item.price)
+    item.description = item_update.get("description",item.description)
+    item.status = item_update.get("status",item.status)
+    db.add(item)
+    db.commit()
+    return item
+    
 
-# def delete(id: int):
-#     for i in range(len(items)):
-#         if items[i].id == id:
-#             delete_item = items.pop(i)
-#             return delete_item
-#     return None
+def delete(db: Session,id: int):
+    item =find_by_id(db,id)
+    if item is None:
+        return None
+    db.delete(item)
+    db.commit()
+    return item
