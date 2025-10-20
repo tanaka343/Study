@@ -1,24 +1,31 @@
-version: '3.8'
-
+version: "3.7"
 services:
-  db:
-    image: postgres:15
-    environment:
-      POSTGRES_USER: inventory_user
-      POSTGRES_PASSWORD: inventory_pass
-      POSTGRES_DB: inventory_db
+  postgres:
+    image: postgres:16-alpine
+    container_name: postgres
     ports:
-      - "5432:5432"
+      - 5432:5432
     volumes:
-      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./docker/postgres/init.d:/docker-entrypoint-initdb.d
+      - ./docker/postgres/pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: fastapiuser
+      POSTGRES_PASSWORD: fastapipass
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
+      POSTGRES_DB: fleamarket
+    hostname: postgres
+    restart: always
+    user: root
 
-  app:
-    build: .
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
     ports:
-      - "8000:8000"
+      - 81:80
     environment:
-      DATABASE_URL: postgresql://inventory_user:inventory_pass@db:5432/inventory_db
-    depends_on:
-      - db
+      PGADMIN_DEFAULT_EMAIL: fastapi@example.com
+      PGADMIN_DEFAULT_PASSWORD: password
     volumes:
-      - ./app:/app/app
+      - ./docker/pgadmin:/var/lib/pgadmin
+    depends_on:
+      - postgres
